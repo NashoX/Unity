@@ -31,6 +31,7 @@ public class DialogueSystem : MonoBehaviour
     public void EnterDialogueMode(TextAsset inkJSON)
     {
         dialoguePanel.SetActive(true);
+        buttonPanel.SetActive(true);
         dialogueIsPlaying = true;
 
         if (currentStory == null || currentStory.state == null)
@@ -64,7 +65,6 @@ public class DialogueSystem : MonoBehaviour
         {
             dialogueText.text = currentStory.Continue();
         }
-        
         else
         {
             ExitDialogueMode();

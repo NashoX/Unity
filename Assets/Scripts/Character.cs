@@ -95,6 +95,7 @@ public class Character : MonoBehaviour
         activeVisualCues.Clear();
 
         bool interactableInRange = false;
+        Iinteractable closestInteractable = null;
         
         for (int i = 0; i < elements; i++)
         {
@@ -108,17 +109,10 @@ public class Character : MonoBehaviour
                     activeVisualCues.Add(visualCue);
                 }
                 
-                if (interactable == currentInteractable)
+                if (interactable is NPC npc && npc.hasInteractedOnce)
                 {
+                    closestInteractable = interactable;
                     interactableInRange = true;
-                }
-                else if (!interactableInRange && currentInteractable == null)
-                {
-                    var dialogueSystem = FindObjectOfType<DialogueSystem>();
-                    if (dialogueSystem != null)
-                    {
-                        dialogueSystem.dialoguePanel.SetActive(true);
-                    }
                 }
             }
         }
@@ -128,8 +122,23 @@ public class Character : MonoBehaviour
             CloseDialogue();
             currentInteractable = null;
         }
+        
+        if (interactableInRange && currentInteractable == null)
+        {
+            var dialogueSystem = FindObjectOfType<DialogueSystem>();
+            if (dialogueSystem != null)
+            {
+                dialogueSystem.dialoguePanel.SetActive(true);
+                dialogueSystem.buttonPanel.SetActive(true);
+            }
+            currentInteractable = closestInteractable;
+        }
+        else if (!interactableInRange && currentInteractable != null)
+        {
+            CloseDialogue();
+        }
     }
-
+    
     private void ActivateInteractable()
     {
         int elements = Physics2D.OverlapCircleNonAlloc(interactionpoint.position, interactionradius, interactables, interactionlayer);
@@ -158,7 +167,7 @@ public class Character : MonoBehaviour
         if (dialogueSystem != null)
         {
             dialogueSystem.dialoguePanel.SetActive(false);
-            //dialogueSystem.ExitDialogueMode();
+            dialogueSystem.buttonPanel.SetActive(false);
         }
     }
 }
