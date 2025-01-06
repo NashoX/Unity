@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class NPC : MonoBehaviour, Iinteractable
 {
-
+    public bool hasInteractedOnce = false;
     private GameObject visualCue;
-    [SerializeField] private string example;
-    [SerializeField] private DialogueSystem dialogueSystem;
+    [SerializeField] private TextAsset inkJSON;
 
     private void Awake()
     {
@@ -21,13 +20,28 @@ public class NPC : MonoBehaviour, Iinteractable
 
     public GameObject GetVisualCue()
     {
-        
         return visualCue;
     }
 
     public void Interact()
     {
-        //Debug.Log(dialogueSystem.inkJSON);
-        dialogueSystem.EnterDialogueMode(dialogueSystem.inkJSON);
+        var dialogueSystem = FindObjectOfType<DialogueSystem>();
+        
+        if (!hasInteractedOnce)
+        {
+            hasInteractedOnce = true;
+            
+            if (inkJSON != null)
+            {
+                dialogueSystem.EnterDialogueMode(inkJSON);
+            }
+        }
+        else
+        {
+            if (inkJSON != null && !dialogueSystem.IsDialoguePlaying())
+            {
+                dialogueSystem.EnterDialogueMode(inkJSON);
+            }
+        }
     }
 }

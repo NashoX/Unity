@@ -19,9 +19,11 @@ public class Character : MonoBehaviour
     [SerializeField] private Transform interactionpoint;
     [SerializeField] private float interactionradius;
     [SerializeField] private LayerMask interactionlayer;
-    private Collider2D[] interactables = new Collider2D[10]; // Permitir más de un interactuable en la zona
-
-    private List<GameObject> activeVisualCues = new List<GameObject>(); // Lista de visual cues activos
+    
+    private Collider2D[] interactables = new Collider2D[10];
+    private Iinteractable currentInteractable;
+    
+    private List<GameObject> activeVisualCues = new List<GameObject>();
 
     private void Awake()
     {
@@ -30,9 +32,9 @@ public class Character : MonoBehaviour
 
     private void Update()
     {
-        move();
+        Move();
         Jump();
-        UpdateInteractables(); // Actualizar los visual cues constantemente
+        UpdateInteractables();
 
         if (Input.GetKeyDown(KeyCode.E))
         {
@@ -40,7 +42,7 @@ public class Character : MonoBehaviour
         }
     }
 
-    private void move()
+    private void Move()
     {
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
@@ -82,8 +84,7 @@ public class Character : MonoBehaviour
     private void UpdateInteractables()
     {
         int elements = Physics2D.OverlapCircleNonAlloc(interactionpoint.position, interactionradius, interactables, interactionlayer);
-
-        // Desactivar todos los visual cues actuales
+        
         foreach (var cue in activeVisualCues)
         {
             if (cue != null)
@@ -93,7 +94,8 @@ public class Character : MonoBehaviour
         }
         activeVisualCues.Clear();
 
-        // Iterar sobre los interactuables detectados y activar los visual cues
+        bool interactableInRange = false;
+        
         for (int i = 0; i < elements; i++)
         {
             var interactable = interactables[i].GetComponent<Iinteractable>();
@@ -102,26 +104,61 @@ public class Character : MonoBehaviour
                 var visualCue = interactable.GetVisualCue();
                 if (visualCue != null)
                 {
-                    visualCue.SetActive(true); // Activar el visual cue continuamente
+                    visualCue.SetActive(true);
                     activeVisualCues.Add(visualCue);
                 }
+                
+                if (interactable == currentInteractable)
+                {
+                    interactableInRange = true;
+                }
+                else if (!interactableInRange && currentInteractable == null)
+                {
+                    var dialogueSystem = FindObjectOfType<DialogueSystem>();
+                    if (dialogueSystem != null)
+                    {
+                        dialogueSystem.dialoguePanel.SetActive(true);
+                    }
+                }
             }
+        }
+        
+        if (currentInteractable != null && !interactableInRange)
+        {
+            CloseDialogue();
+            currentInteractable = null;
         }
     }
 
     private void ActivateInteractable()
     {
         int elements = Physics2D.OverlapCircleNonAlloc(interactionpoint.position, interactionradius, interactables, interactionlayer);
+
         if (elements == 0)
         {
             Debug.Log("No interactables found");
             return;
         }
 
-        var interactable = interactables[0].GetComponent<Iinteractable>();
-        if (interactable != null)
+        for (int i = 0; i < elements; i++)
         {
-            interactable.Interact();
+            var interactable = interactables[i].GetComponent<Iinteractable>();
+            if (interactable != null)
+            {
+                currentInteractable = interactable;
+                interactable.Interact();
+                return;
+            }
+        }
+    }
+
+    private void CloseDialogue()
+    {
+        var dialogueSystem = FindObjectOfType<DialogueSystem>();
+        if (dialogueSystem != null)
+        {
+            dialogueSystem.dialoguePanel.SetActive(false);
+            //dialogueSystem.ExitDialogueMode();
         }
     }
 }

@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 46424616}
   - component: {fileID: 46424615}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: ButtonPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1027,7 +1027,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &910719993
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1376,26 +1376,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1093615974 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2811381062955910930, guid: e5e88b80e99995e438fa50a73041b06b, type: 3}
-  m_PrefabInstance: {fileID: 1531334659}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1093615979
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1093615974}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 817da8ebd14c7644e92e97646c0743ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DialoguePanel: {fileID: 910719992}
-  DialogueText: {fileID: 926489247}
-  inkJSON: {fileID: 4900000, guid: cb3d5f04f0a89a44da6d532362dced62, type: 3}
 --- !u!1001 &1095961854
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1733,6 +1713,53 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1324901904}
   m_CullTransparentMesh: 1
+--- !u!1 &1384185301
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1384185303}
+  - component: {fileID: 1384185302}
+  m_Layer: 0
+  m_Name: DialogueManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1384185302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1384185301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 817da8ebd14c7644e92e97646c0743ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialoguePanel: {fileID: 910719992}
+  dialogueText: {fileID: 926489247}
+  buttonPanel: {fileID: 46424613}
+--- !u!4 &1384185303
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1384185301}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.628135, y: 1.5466686, z: 0.0005063042}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1389234523 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 392970974744698254, guid: e8ca8698bdac20c4d95d88f3f72c2a00, type: 3}
@@ -1817,16 +1844,17 @@ PrefabInstance:
       value: hola roko
       objectReference: {fileID: 0}
     - target: {fileID: 7851445150818343970, guid: e5e88b80e99995e438fa50a73041b06b, type: 3}
+      propertyPath: inkJSON
+      value: 
+      objectReference: {fileID: 4900000, guid: cb3d5f04f0a89a44da6d532362dced62, type: 3}
+    - target: {fileID: 7851445150818343970, guid: e5e88b80e99995e438fa50a73041b06b, type: 3}
       propertyPath: dialogueSystem
       value: 
-      objectReference: {fileID: 1093615979}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2811381062955910930, guid: e5e88b80e99995e438fa50a73041b06b, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1093615979}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5e88b80e99995e438fa50a73041b06b, type: 3}
 --- !u!4 &1840079175 stripped
 Transform:
@@ -2285,3 +2313,4 @@ SceneRoots:
   - {fileID: 182001878}
   - {fileID: 2057959802}
   - {fileID: 1093369306}
+  - {fileID: 1384185303}

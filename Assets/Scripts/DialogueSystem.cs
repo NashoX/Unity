@@ -3,89 +3,76 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using Ink.Runtime;
-using System.Runtime.CompilerServices;
-
 
 public class DialogueSystem : MonoBehaviour
 {
-    [Header("dialogue UI")]
-    [SerializeField] private GameObject DialoguePanel;
-    [SerializeField] private TextMeshProUGUI DialogueText;
-    [Header("inkJSON")]
-    public TextAsset inkJSON;
+    [Header("Dialogue UI")]
+    public GameObject dialoguePanel;
+    [SerializeField] private TextMeshProUGUI dialogueText;
+
+    [Header("Button UI")] 
+    public GameObject buttonPanel;
+
+    [Header("InkJSON")]
     private Story currentStory;
     private bool dialogueIsPlaying;
-    private static DialogueSystem instance;
+
     private void Awake()
     {
-        if (instance != null) {
-            Debug.LogWarning("gay");
-        }
-        instance= this;
-
-
-
+        dialoguePanel.SetActive(false);
+        buttonPanel.SetActive(false);
     }
-    public static DialogueSystem GetInstance()
-    {
-        return instance;
-    }
+
     private void Start()
     {
         dialogueIsPlaying = false;
-        DialoguePanel.SetActive(false); 
     }
-    public void EnterDialogueMode (TextAsset inkJSON)
+
+    public void EnterDialogueMode(TextAsset inkJSON)
     {
-        currentStory = new Story(inkJSON.text);
+        dialoguePanel.SetActive(true);
         dialogueIsPlaying = true;
-        DialoguePanel.SetActive(true);
-        if (currentStory.canContinue ) {
-            DialogueText.text = currentStory.Continue();
-        }
-        else
+
+        if (currentStory == null || currentStory.state == null)
         {
-            ExitDialogueMode();
-
+            currentStory = new Story(inkJSON.text);
         }
 
-        
-
-
-
+        ContinueStory();
     }
 
-    private void ExitDialogueMode()
+    public void ExitDialogueMode()
     {
-        dialogueIsPlaying=false;
-        DialoguePanel.SetActive(false);
-        DialogueText.text = "";
+        dialogueIsPlaying = false;
+        dialoguePanel.SetActive(false);
+        dialogueText.text = "";
     }
+
     private void Update()
     {
-        if (!dialogueIsPlaying) {
-            return;
-        }
+        if (!dialogueIsPlaying) return;
 
         if (Input.GetMouseButtonDown(0))
         {
             ContinueStory();
         }
+    }
 
-
-
-        }
     private void ContinueStory()
     {
-        if (currentStory.canContinue) { 
-            DialogueText.text = currentStory.Continue();
-        
+        if (currentStory.canContinue)
+        {
+            dialogueText.text = currentStory.Continue();
         }
-        else { ExitDialogueMode(); }
-
-
+        
+        else
+        {
+            ExitDialogueMode();
+        }
     }
+
+    public bool IsDialoguePlaying()
+    {
+        return dialogueIsPlaying;
     }
-
-
-
+}
