@@ -160,8 +160,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -805.3915, y: 188.93}
+  m_SizeDelta: {x: -1610.783, y: -677.8538}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &46424615
 MonoBehaviour:
@@ -180,11 +180,11 @@ MonoBehaviour:
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
-  m_ChildAlignment: 7
+  m_ChildAlignment: 6
   m_StartCorner: 0
-  m_StartAxis: 0
+  m_StartAxis: 1
   m_CellSize: {x: 150, y: 100}
-  m_Spacing: {x: 100, y: 100}
+  m_Spacing: {x: 0, y: 50}
   m_Constraint: 0
   m_ConstraintCount: 2
 --- !u!114 &46424616
@@ -384,12 +384,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 4
+    m_Mode: -1
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
+    m_SelectOnUp: {fileID: 268837577}
+    m_SelectOnDown: {fileID: 268837577}
     m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 999965582}
+    m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 0.5801887, g: 1, b: 0.9700428, a: 1}
@@ -950,11 +950,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 4
+    m_Mode: -1
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 999965582}
+    m_SelectOnUp: {fileID: 837447492}
+    m_SelectOnDown: {fileID: 837447492}
+    m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
@@ -1051,7 +1051,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &910719993
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1069,7 +1069,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0, y: 100}
+  m_AnchoredPosition: {x: -585, y: 465}
   m_SizeDelta: {x: 750, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &926489245
@@ -1258,12 +1258,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 4
+    m_Mode: -1
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 268837577}
-    m_SelectOnRight: {fileID: 837447492}
+    m_SelectOnUp: {fileID: 837447492}
+    m_SelectOnDown: {fileID: 999965582}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 0.5801887, g: 1, b: 0.9700428, a: 1}
