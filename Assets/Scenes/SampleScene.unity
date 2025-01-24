@@ -384,12 +384,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
+    m_SelectOnRight: {fileID: 999965582}
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 0.5801887, g: 1, b: 0.9700428, a: 1}
@@ -414,7 +414,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 268837578}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1384185302}
+        m_TargetAssemblyTypeName: DialogueSystem, Assembly-CSharp
+        m_MethodName: MakeChoice
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &268837578
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -938,11 +950,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnLeft: {fileID: 999965582}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
@@ -968,7 +980,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 837447493}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1384185302}
+        m_TargetAssemblyTypeName: DialogueSystem, Assembly-CSharp
+        m_MethodName: MakeChoice
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &837447493
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1234,12 +1258,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
+    m_SelectOnLeft: {fileID: 268837577}
+    m_SelectOnRight: {fileID: 837447492}
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 0.5801887, g: 1, b: 0.9700428, a: 1}
@@ -1264,7 +1288,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 999965583}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1384185302}
+        m_TargetAssemblyTypeName: DialogueSystem, Assembly-CSharp
+        m_MethodName: MakeChoice
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &999965583
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1744,6 +1780,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialoguePanel: {fileID: 910719992}
   dialogueText: {fileID: 926489247}
+  choices:
+  - {fileID: 268837575}
+  - {fileID: 999965580}
+  - {fileID: 837447490}
   buttonPanel: {fileID: 46424613}
 --- !u!4 &1384185303
 Transform:
@@ -2253,6 +2293,18 @@ PrefabInstance:
     - target: {fileID: 178347635711851642, guid: 2fad34b970023a8469084d1f2be4adea, type: 3}
       propertyPath: m_TagString
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 2144930181926747148, guid: 2fad34b970023a8469084d1f2be4adea, type: 3}
+      propertyPath: m_Color.b
+      value: 0.5754717
+      objectReference: {fileID: 0}
+    - target: {fileID: 2144930181926747148, guid: 2fad34b970023a8469084d1f2be4adea, type: 3}
+      propertyPath: m_Color.g
+      value: 0.5754717
+      objectReference: {fileID: 0}
+    - target: {fileID: 2144930181926747148, guid: 2fad34b970023a8469084d1f2be4adea, type: 3}
+      propertyPath: m_Color.r
+      value: 0.5754717
       objectReference: {fileID: 0}
     - target: {fileID: 8257091756282257078, guid: 2fad34b970023a8469084d1f2be4adea, type: 3}
       propertyPath: m_LocalPosition.x
