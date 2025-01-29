@@ -10,13 +10,9 @@ public class SceneChanger : MonoBehaviour, Iinteractable
     {
         if (!string.IsNullOrEmpty(sceneToLoad))
         {
-            Debug.Log("Cambiando a la escena: " + sceneToLoad);
             SceneManager.LoadScene(sceneToLoad); // Cambiar a la escena especificada
         }
-        else
-        {
-            Debug.LogWarning("No se ha especificado ninguna escena para cargar.");
-        }
+       
     }
 
     public GameObject GetVisualCue()
