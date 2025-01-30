@@ -41,3 +41,21 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Fond
+    uniqueID: 2527415879
+    locked: 0
+  - name: Background2
+    uniqueID: 3540667179
+    locked: 0
+  - name: Background
+    uniqueID: 3952037831
+    locked: 0
+  - name: floor
+    uniqueID: 2625784905
+    locked: 0
+  - name: player
+    uniqueID: 2773971051
+    locked: 0
+  - name: Frontground
+    uniqueID: 2649315195
+    locked: 0
